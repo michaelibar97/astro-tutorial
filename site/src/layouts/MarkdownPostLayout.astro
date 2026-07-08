@@ -1,0 +1,20 @@
+---
+import BackToBlog from '../components/BackToBlog.astro';
+const { frontmatter } = Astro.props;
+---
+<meta charset="utf-8" />
+
+<!-- Adds the button to the top of the page -->
+<BackToBlog />
+
+<!-- The layout automatically grabs frontmatter and builds the top of your page -->
+<h1>{frontmatter.title}</h1>
+<p><strong>Published on:</strong> {frontmatter.pubDate.toString().slice(0,10)}</p>
+<p><strong>Written by:</strong> {frontmatter.author}</p>
+<p><em>{frontmatter.description}</em></p>
+<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+<hr /> <!-- Visual line to separate info from your post content -->
+
+<!-- Your actual markdown text shoots in right here -->
+<slot />
